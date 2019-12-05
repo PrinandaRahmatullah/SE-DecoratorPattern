@@ -2,10 +2,10 @@ package starbuzz;
 
 public class Espresso extends Beverage {
 
-    //  menambah objek temp dari Beverage untuk menambah harga dari beverage tambahan dan harga beverage ini
-    private Beverage temp;
+    //  menambah harga tambahan untuk menyimpan harga sementara
+    private double costAdd;
 
-    public Espresso() {
+    Espresso() {
         description = "Espresso";
     }
 
@@ -16,15 +16,18 @@ public class Espresso extends Beverage {
         else
             this.description = beverage.getDescription() + " Espresso";
 
-        temp = beverage;
+        this.costAdd = beverage.cost();
     }
 
-    /*
-        penambahan exception handling untuk harga awal beveraga dan tambahannya
-     */
+    // Penambahan method accessor getCostAdd
+    private double getCostAdd(){
+        return this.costAdd;
+    }
+
+    // Penambahan exception handling untuk harga awal beveraga dan tambahannya
     public double cost() {
         try {
-            return 1.99 + temp.cost();
+            return 1.99 + getCostAdd();
         } catch (Exception any){
             return 1.99;
         }

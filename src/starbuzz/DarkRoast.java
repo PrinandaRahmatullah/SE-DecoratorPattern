@@ -2,31 +2,36 @@ package starbuzz;
 
 public class DarkRoast extends Beverage {
 
-    //menambah objek temp dari Beverage untuk menambah harga dari beverage tambahan dan harga beverage ini
-    private Beverage temp;
+    ///  menambah harga tambahan untuk menyimpan harga sementara
+    private double costAdd;
 
-    public DarkRoast() {
+    DarkRoast() {
         description = "Dark Roast Coffee";
     }
 
     //  Pak, terdapat penambahan cosntructor dengan parameter Beverage untuk menambah deskripsi dari beverage dan tambahannya
-    public DarkRoast(Beverage beverage){
+    DarkRoast(Beverage beverage){
         if (beverage.getDescription().equalsIgnoreCase("Dark Roast Coffee"))
             this.description = "Double Dark Roast Coffee";
         else
             this.description = beverage.getDescription() + " Dark Roast Coffee";
 
-        temp = beverage;
+        this.costAdd = beverage.cost();
     }
 
-    /*
-        penambahan exception handling untuk harga awal beveraga dan tambahannya
-    */
+    // Penambahan method accessor getCostAdd
+    private double getCostAdd(){
+        return this.costAdd;
+    }
+
+    // Penambahan exception handling untuk harga awal beveraga dan tambahannya
     public double cost() {
         try {
-            return 0.99 + temp.cost();
+            return 0.99 + getCostAdd();
         } catch (Exception any) {
             return 0.99;
         }
     }
+
+
 }

@@ -2,29 +2,32 @@ package starbuzz;
 
 public class Decaf extends Beverage {
 
-    //menambah objek temp dari Beverage untuk menambah harga dari beverage tambahan dan harga beverage ini
-    private Beverage temp;
+    //  menambah harga tambahan untuk menyimpan harga sementara
+    private double costAdd;
 
-    public Decaf() {
+    Decaf() {
         description = "Decaf Coffee";
     }
 
     //  Pak, terdapat penambahan cosntructor dengan parameter Beverage untuk menambah deskripsi dari beverage dan tambahannya
-    public Decaf(Beverage beverage){
+    Decaf(Beverage beverage){
         if (beverage.getDescription().equalsIgnoreCase("Decaf Coffee"))
             this.description = "Double Decaf Coffee";
         else
             this.description = beverage.getDescription() + " Decaf Coffee";
 
-        temp = beverage;
+        this.costAdd = beverage.cost();
     }
 
-    /*
-        penambahan exception handling untuk harga awal beveraga dan tambahannya
-    */
+    // Penambahan method accessor getCostAdd
+    private double getCostAdd(){
+        return this.costAdd;
+    }
+
+    // Penambahan exception handling untuk harga awal beveraga dan tambahannya
     public double cost() {
         try {
-            return 1.05 + temp.cost();
+            return 1.05 + getCostAdd();
         } catch (Exception any) {
             return 1.05;
         }

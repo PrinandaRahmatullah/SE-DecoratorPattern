@@ -49,5 +49,10 @@ public class StarbuzzCoffee {
         beverage3 = new Decaf(beverage3);
 
         System.out.println(beverage3.getDescription() + " --> $ " + df.format(beverage3.cost()));
+
+        Beverage beverage4 = new Espresso();
+        beverage4 = new HouseBlend(beverage4);
+
+        System.out.println(beverage4.getDescription() + " --> $ " + df.format(beverage4.cost()));
     }
 }

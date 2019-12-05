@@ -2,29 +2,32 @@ package starbuzz;
 
 public class HouseBlend extends Beverage {
 
-    //  menambah objek temp dari Beverage untuk menambah harga dari beverage tambahan dan harga beverage ini
-    private Beverage temp;
+    //  menambah harga tambahan untuk menyimpan harga sementara
+    private double costAdd;
 
-    public HouseBlend() {
+    HouseBlend() {
         description = "House Blend Coffee";
     }
 
     //  Pak, terdapat penambahan cosntructor dengan parameter Beverage untuk menambah deskripsi dari beverage dan tambahannya
-    public HouseBlend(Beverage beverage){
+    HouseBlend(Beverage beverage){
         if (beverage.getDescription().equalsIgnoreCase("House Blend Coffee"))
             this.description = "Double House Blend Coffee";
         else
             this.description = beverage.getDescription() + " House Blend Coffee";
 
-        temp = beverage;
+        this.costAdd = beverage.cost();
     }
 
-    /*
-        penambahan exception handling untuk harga awal beveraga dan tambahannya
-     */
+    // Penambahan method accessor getCostAdd
+    private double getCostAdd(){
+        return this.costAdd;
+    }
+
+    // Penambahan exception handling untuk harga awal beveraga dan tambahannya
     public double cost() {
         try {
-            return 0.89 + temp.cost();
+            return 0.89 + getCostAdd();
         } catch (Exception any) {
             return 0.89;
         }
